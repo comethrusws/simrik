@@ -30,11 +30,11 @@ function ChatRow({id}: Props) {
 
     const removeChat = async()=>{
         await deleteDoc(doc(db, "users", session?.user?.email!, "chats", id));
-        router.replace("/")
+        router.push("/")
     }
 
   return (
-    <Link className={`chatRow justify-center ${active && `bg-neutral-500/50 dark:bg-neutral-600/50`}`} href={`chat/${id}`}>
+    <Link className={`chatRow mb-1 justify-center ${active && `bg-neutral-500/50 dark:bg-neutral-600/50`}`} href={`/chat/${id}`}>
         <p className="flex-1 hidden md:inline-flex truncate">
             {messages?.docs[messages.docs.length - 1]?.data().text || "New Chat"}
         </p>

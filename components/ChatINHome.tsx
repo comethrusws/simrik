@@ -17,7 +17,7 @@ function ChatINHome({ chatID }: Props) {
         <form action="" className="p-2 space-x-12 md:space-x-80 flex mx-3">
           <button><BsPaperclip className="w-5 h-5 dark:text-gray-300 text-black" /></button>
           <input type="text"
-            className="bg-transparent focus:outline-none flex-1 disabled:cursor-not-allowed disabled:text-gray-400"
+            className="w-full bg-transparent md:space-x-60 focus:outline-none flex-1 disabled:cursor-not-allowed disabled:text-gray-400"
             disabled={!session}
             value={prompt}
             onChange={e => setPrompt(e.target.value)}

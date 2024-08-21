@@ -3,7 +3,13 @@ import { AiTwotoneExperiment } from "react-icons/ai";
 import { LuAlertTriangle } from "react-icons/lu";
 import { MdOutlineBolt } from "react-icons/md";
 
-export default function Home() {
+type Props ={
+  params:{
+    id:string
+  }
+}
+
+export default function Home({ params: { id }}: Props) {
   return (
     <main className="flex h-screen flex-col items-center justify-between px-2 p-24 text-black dark:text-white">
       <div className="mb-20">
@@ -48,7 +54,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <ChatINHome/>
+      <ChatINHome chatID={id}/>
     </main>
   );
 }

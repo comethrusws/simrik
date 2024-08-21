@@ -1,8 +1,30 @@
-import React from 'react'
+"use client"
+import { useSession } from 'next-auth/react';
+import React, { useState } from 'react'
+import { BsPaperclip } from 'react-icons/bs';
+import { RxPaperPlane } from 'react-icons/rx';
 
-function ChatInput() {
+type Props={
+  chatID: string;
+}
+
+function ChatInput({ chatID }: Props) {
+  const [prompt, setPrompt] = useState("");
+  const {data: session} = useSession();
   return (
-    <div>ChatInput</div>
+    <div className="bg-neutral-400/50 rounded-3xl text-sm text-gray-300 mb-2 mx-3">
+      <form action="" className="p-2 space-x-7 flex mx-3">
+        <button><BsPaperclip className="w-5 h-5 dark:text-gray-300 text-black" /></button>
+        <input type="text"
+          className="bg-transparent focus:outline-none flex-1 disabled:cursor-not-allowed disabled:text-gray-400"
+          disabled={!session}
+          value={prompt}
+          onChange={e => setPrompt(e.target.value)}
+          placeholder="Enter your message here..."
+        />
+        <button type="submit" disabled={!prompt || !session} className="hover:opacity-40 font-bold disabled:cursor-not-allowed"><RxPaperPlane className="h-4 -rotate-45 w-4 dark:text-gray-300 text-black" /></button>
+      </form>
+    </div>
   )
 }
 

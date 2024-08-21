@@ -1,8 +1,12 @@
 import React from 'react'
 
-function Chat() {
+type Props={
+  chatID: string;
+}
+
+function Chat({ chatID }: Props) {
   return (
-    <div>Chat</div>
+    <div className="flex-1">Chat</div>
   )
 }
 

@@ -1,11 +1,11 @@
-import Image from "next/image";
+import ChatINHome from "@/components/ChatINHome";
 import { AiTwotoneExperiment } from "react-icons/ai";
 import { LuAlertTriangle } from "react-icons/lu";
 import { MdOutlineBolt } from "react-icons/md";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between px-2 p-24 text-black dark:text-white">
+    <main className="flex h-screen flex-col items-center justify-between px-2 p-24 text-black dark:text-white">
       <div className="mb-20">
         <h1 className="text-5xl font-bold">SIMRIK</h1>
         <p className="text-[9px] text-gray-400">Powered by GEM-1o</p>
@@ -47,8 +47,8 @@ export default function Home() {
             <p className="infoText">Knowledge limited to Literatures and Corpuses only.</p>
           </div>
         </div>
-
       </div>
+      <ChatINHome/>
     </main>
   );
 }

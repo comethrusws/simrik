@@ -3,14 +3,21 @@ import React from 'react'
 import NewChat from './newChat'
 import { signOut, useSession } from 'next-auth/react'
 import { PiStarFourFill } from 'react-icons/pi';
+import { useCollection } from 'react-firebase-hooks/firestore'
+import { db } from '@/firebase';
+import { collection, orderBy, query } from 'firebase/firestore';
+import ChatRow from './ChatRow';
 
 function Sidebar() {
     const { data: session } = useSession();
+    const [ chats, loading, error ] = useCollection(
+        session && query(collection(db, "users", session.user?.email!, "chats"), orderBy("createdAt", "asc"))
+    );
 
   return (
     <div className="p-2 flex flex-col min-h-screen">
         <div className="flex-1">
-            <p className="flex text-[10px] mb-3 mt-1 text-neutral-400 items-center justify-center">SIMRIK: powered on GEM-1o(Aug)</p>
+            <p className="flex text-[10px] mb-3 mt-1 dark:text-neutral-400 text-neutral-600 items-center justify-center">SIMRIK: powered on GEM-1o(Aug)</p>
             <div>
                 {/*New chat here btw*/}
                 <NewChat/>
@@ -20,6 +27,9 @@ function Sidebar() {
                 </div>
 
                 {/* map thru Chat rows*/}
+                {chats?.docs.map(chat => (
+                    <ChatRow key={chat.id} id={chat.id}/>
+                ))}
             </div>
         </div>
 

@@ -33,7 +33,7 @@ export default async function RootLayout({
               <Login/>
             ): (
               <div className="flex">
-              <div className="bg-neutral-400 dark:bg-neutral-900 max-w-xs h-screen overflow-y-auto md:min-w-[20rem]">
+              <div className="h-screen overflow-y-auto md:min-w-[20rem]">
                 <Sidebar/>
               </div>
 

@@ -1,4 +1,5 @@
 import ChatINHome from "@/components/ChatINHome";
+import ChatInput from "@/components/ChatInput";
 import { AiTwotoneExperiment } from "react-icons/ai";
 import { LuAlertTriangle } from "react-icons/lu";
 import { MdOutlineBolt } from "react-icons/md";
@@ -54,7 +55,10 @@ export default function Home({ params: { id }}: Props) {
           </div>
         </div>
       </div>
-      <ChatINHome chatID={id}/>
+      <div className="w-full mt-4">
+      <ChatInput chatID={id}/>
+      </div>
+      
     </main>
   );
 }
